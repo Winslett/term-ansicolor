@@ -6,7 +6,7 @@ require 'rake/clean'
 require 'rbconfig'
 include Config
 
-PKG_NAME = 'term-ansicolor'
+PKG_NAME = 'ansiterm-ansicolor'
 PKG_VERSION = File.read('VERSION').chomp
 PKG_FILES = FileList['**/*'].exclude(/(CVS|\.svn|pkg|coverage|doc)/)
 CLEAN.include 'coverage', 'doc'
@@ -36,7 +36,7 @@ if defined? Gem
     s.has_rdoc = true
     s.extra_rdoc_files << 'README'
     s.executables << 'cdiff' << 'decolor'
-    s.rdoc_options << '--main' <<  'README' << '--title' << 'Term::ANSIColor'
+    s.rdoc_options << '--main' <<  'README' << '--title' << 'AnsiTerm::ANSIColor'
     s.test_files = Dir['tests/*.rb']
 
     s.author = "Florian Frank"
@@ -54,11 +54,11 @@ end
 desc m = "Writing version information for #{PKG_VERSION}"
 task :version do
   puts m
-  File.open(File.join('lib', 'term', 'ansicolor', 'version.rb'), 'w') do |v|
+  File.open(File.join('lib', 'ansiterm', 'ansicolor', 'version.rb'), 'w') do |v|
     v.puts <<EOT
-module Term
+module AnsiTerm
   module ANSIColor
-    # Term::ANSIColor version
+    # AnsiTerm::ANSIColor version
     VERSION         = '#{PKG_VERSION}'
     VERSION_ARRAY   = VERSION.split(/\\./).map { |x| x.to_i } # :nodoc:
     VERSION_MAJOR   = VERSION_ARRAY[0] # :nodoc:
